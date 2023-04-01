@@ -5,6 +5,11 @@
     <artifactId>YoutubeDownloader</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
+    <dependency>
+        <groupId>com.google.apis</groupId>
+        <artifactId>google-api-services-youtube</artifactId>
+        <version>v3-rev20220315-1.32.1</version>
+    </dependency>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>18</maven.compiler.source>
