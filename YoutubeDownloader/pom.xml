@@ -5,15 +5,22 @@
     <artifactId>YoutubeDownloader</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <dependency>
-        <groupId>com.google.apis</groupId>
-        <artifactId>google-api-services-youtube</artifactId>
-        <version>v3-rev20220315-1.32.1</version>
-    </dependency>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
         <exec.mainClass>com.mycompany.youtubedownloader.YoutubeDownloader</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-youtube</artifactId>
+            <version>v3-rev20220315-1.32.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.axet</groupId>
+            <artifactId>youtube-dl-java</artifactId>
+            <version>0.4.1</version>
+        </dependency>
+    </dependencies>
 </project>
