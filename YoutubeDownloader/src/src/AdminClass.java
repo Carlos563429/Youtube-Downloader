@@ -13,7 +13,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class AdminClass {
 
-    String path;
+    String path = "";
 
     public void chooseFile() {
 
@@ -23,7 +23,6 @@ public class AdminClass {
         } catch (Exception e) {
             System.err.println(e);
         } finally {*/
-        
         JFileChooser fc = new JFileChooser();
 
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -38,4 +37,9 @@ public class AdminClass {
             //}
         }
     }
+    
+    public void downloadVideo() {
+        //
+    }
+
 }

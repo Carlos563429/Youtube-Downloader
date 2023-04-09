@@ -201,6 +201,9 @@ public class DownloaderUI extends javax.swing.JFrame {
         downloadLabel.setText("Download");
         downloadLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         downloadLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                downloadLabelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 downloadLabelMouseEntered(evt);
             }
@@ -296,6 +299,12 @@ public class DownloaderUI extends javax.swing.JFrame {
         
         ac.chooseFile();
     }//GEN-LAST:event_searchLabelMouseClicked
+
+    private void downloadLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downloadLabelMouseClicked
+        AdminClass ac = new AdminClass();
+        
+        ac.downloadVideo();
+    }//GEN-LAST:event_downloadLabelMouseClicked
 
     /**
      * @param args the command line arguments
