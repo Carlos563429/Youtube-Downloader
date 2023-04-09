@@ -1,6 +1,7 @@
 package src;
 
 import java.io.File;
+import java.io.FileWriter;
 
 import javax.swing.JFileChooser;
 import com.formdev.flatlaf.FlatLightLaf;
@@ -39,7 +40,14 @@ public class AdminClass {
     }
     
     public void downloadVideo() {
-        //
+        
+        //First I need to write the path
+        File file = new File("no_editar.sync");
+        FileWriter fw = new FileWriter("no_editar.sync");        
+        
+        fw.append(path);
+
+        fw.close();
     }
 
 }
