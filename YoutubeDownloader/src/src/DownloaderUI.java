@@ -15,10 +15,9 @@ public class DownloaderUI extends javax.swing.JFrame {
     /**
      * Creates new form DownloaderUI
      */
-    
     private int xMouse;
     private int yMouse;
-    
+
     public DownloaderUI() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -39,11 +38,20 @@ public class DownloaderUI extends javax.swing.JFrame {
         closePane = new javax.swing.JPanel();
         closeLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        linkField = new javax.swing.JTextField();
+        linkLabel = new javax.swing.JLabel();
+        linkSeparator = new javax.swing.JSeparator();
+        linkLabel1 = new javax.swing.JLabel();
+        searchPane = new javax.swing.JPanel();
+        searchLabel = new javax.swing.JLabel();
+        downloadPane = new javax.swing.JPanel();
+        downloadLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         backgroundPane.setBackground(new java.awt.Color(255, 255, 255));
+        backgroundPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         headerPane.setBackground(new java.awt.Color(251, 80, 64));
 
@@ -62,7 +70,7 @@ public class DownloaderUI extends javax.swing.JFrame {
 
         closePane.setBackground(new java.awt.Color(251, 80, 64));
 
-        closeLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
+        closeLabel.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         closeLabel.setForeground(new java.awt.Color(255, 255, 255));
         closeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         closeLabel.setText("X");
@@ -95,7 +103,7 @@ public class DownloaderUI extends javax.swing.JFrame {
         resizeHeaderPaneLayout.setHorizontalGroup(
             resizeHeaderPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resizeHeaderPaneLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 531, Short.MAX_VALUE)
                 .addComponent(closePane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         resizeHeaderPaneLayout.setVerticalGroup(
@@ -105,7 +113,7 @@ public class DownloaderUI extends javax.swing.JFrame {
                 .addComponent(closePane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Youtube Downloader");
@@ -114,8 +122,11 @@ public class DownloaderUI extends javax.swing.JFrame {
         headerPane.setLayout(headerPaneLayout);
         headerPaneLayout.setHorizontalGroup(
             headerPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(resizeHeaderPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addGroup(headerPaneLayout.createSequentialGroup()
+                .addGroup(headerPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resizeHeaderPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         headerPaneLayout.setVerticalGroup(
             headerPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,42 +136,110 @@ public class DownloaderUI extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout backgroundPaneLayout = new javax.swing.GroupLayout(backgroundPane);
-        backgroundPane.setLayout(backgroundPaneLayout);
-        backgroundPaneLayout.setHorizontalGroup(
-            backgroundPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        backgroundPane.add(headerPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, -1));
+
+        linkField.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        linkField.setForeground(new java.awt.Color(204, 204, 204));
+        linkField.setText("Paste HERE.");
+        linkField.setBorder(null);
+        linkField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                linkFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                linkFieldFocusLost(evt);
+            }
+        });
+        backgroundPane.add(linkField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 500, 40));
+
+        linkLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        linkLabel.setText("Link:");
+        backgroundPane.add(linkLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        backgroundPane.add(linkSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 500, -1));
+
+        linkLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        linkLabel1.setText("Path:");
+        backgroundPane.add(linkLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        searchPane.setBackground(new java.awt.Color(251, 80, 64));
+
+        searchLabel.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
+        searchLabel.setForeground(new java.awt.Color(255, 255, 255));
+        searchLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        searchLabel.setText("Search...");
+        searchLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                searchLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                searchLabelMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout searchPaneLayout = new javax.swing.GroupLayout(searchPane);
+        searchPane.setLayout(searchPaneLayout);
+        searchPaneLayout.setHorizontalGroup(
+            searchPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(searchLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
         );
-        backgroundPaneLayout.setVerticalGroup(
-            backgroundPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backgroundPaneLayout.createSequentialGroup()
-                .addComponent(headerPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 334, Short.MAX_VALUE))
+        searchPaneLayout.setVerticalGroup(
+            searchPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(searchLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
+
+        backgroundPane.add(searchPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 160, 30));
+
+        downloadPane.setBackground(new java.awt.Color(251, 80, 64));
+
+        downloadLabel.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        downloadLabel.setForeground(new java.awt.Color(255, 255, 255));
+        downloadLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        downloadLabel.setText("Download");
+        downloadLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        downloadLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                downloadLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                downloadLabelMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout downloadPaneLayout = new javax.swing.GroupLayout(downloadPane);
+        downloadPane.setLayout(downloadPaneLayout);
+        downloadPaneLayout.setHorizontalGroup(
+            downloadPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(downloadLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+        );
+        downloadPaneLayout.setVerticalGroup(
+            downloadPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(downloadLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        backgroundPane.add(downloadPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 160, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backgroundPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(backgroundPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(backgroundPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(backgroundPane, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void closeLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseEntered
-        closePane.setBackground(new Color(255,205,197));
+        closePane.setBackground(new Color(255, 205, 197));
         //Default Color (251, 80, 64)
     }//GEN-LAST:event_closeLabelMouseEntered
 
     private void closeLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseExited
-        closePane.setBackground(new Color(251,80,64));
+        closePane.setBackground(new Color(251, 80, 64));
     }//GEN-LAST:event_closeLabelMouseExited
 
     private void closeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseClicked
@@ -175,9 +254,39 @@ public class DownloaderUI extends javax.swing.JFrame {
     private void resizeHeaderPaneMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resizeHeaderPaneMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        
+
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_resizeHeaderPaneMouseDragged
+
+    private void linkFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_linkFieldFocusGained
+
+        if (linkField.getText().equals("Paste HERE.")) {
+            linkField.setText("");
+        }
+
+    }//GEN-LAST:event_linkFieldFocusGained
+
+    private void linkFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_linkFieldFocusLost
+        if (linkField.getText().equals("")) {
+            linkField.setText("Paste HERE.");
+        }
+    }//GEN-LAST:event_linkFieldFocusLost
+
+    private void searchLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchLabelMouseEntered
+        searchPane.setBackground(new Color(255, 205, 197));
+    }//GEN-LAST:event_searchLabelMouseEntered
+
+    private void searchLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchLabelMouseExited
+        searchPane.setBackground(new Color(251, 80, 64));
+    }//GEN-LAST:event_searchLabelMouseExited
+
+    private void downloadLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downloadLabelMouseExited
+        downloadPane.setBackground(new Color(251,80,64));
+    }//GEN-LAST:event_downloadLabelMouseExited
+
+    private void downloadLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downloadLabelMouseEntered
+        downloadPane.setBackground(new Color(255, 205, 197));
+    }//GEN-LAST:event_downloadLabelMouseEntered
 
     /**
      * @param args the command line arguments
@@ -218,8 +327,16 @@ public class DownloaderUI extends javax.swing.JFrame {
     private javax.swing.JPanel backgroundPane;
     private javax.swing.JLabel closeLabel;
     private javax.swing.JPanel closePane;
+    private javax.swing.JLabel downloadLabel;
+    private javax.swing.JPanel downloadPane;
     private javax.swing.JPanel headerPane;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField linkField;
+    private javax.swing.JLabel linkLabel;
+    private javax.swing.JLabel linkLabel1;
+    private javax.swing.JSeparator linkSeparator;
     private javax.swing.JPanel resizeHeaderPane;
+    private javax.swing.JLabel searchLabel;
+    private javax.swing.JPanel searchPane;
     // End of variables declaration//GEN-END:variables
 }
