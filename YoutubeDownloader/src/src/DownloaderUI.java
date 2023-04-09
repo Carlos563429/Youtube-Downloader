@@ -5,6 +5,7 @@
 package src;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -287,7 +288,7 @@ public class DownloaderUI extends javax.swing.JFrame {
     }//GEN-LAST:event_searchLabelMouseExited
 
     private void downloadLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downloadLabelMouseExited
-        downloadPane.setBackground(new Color(251,80,64));
+        downloadPane.setBackground(new Color(251, 80, 64));
     }//GEN-LAST:event_downloadLabelMouseExited
 
     private void downloadLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downloadLabelMouseEntered
@@ -296,14 +297,21 @@ public class DownloaderUI extends javax.swing.JFrame {
 
     private void searchLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchLabelMouseClicked
         AdminClass ac = new AdminClass();
-        
+
         ac.chooseFile();
     }//GEN-LAST:event_searchLabelMouseClicked
 
     private void downloadLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downloadLabelMouseClicked
-        AdminClass ac = new AdminClass();
-        
-        ac.downloadVideo();
+
+        if (!linkField.getText().equals("")) {
+            
+            AdminClass ac = new AdminClass();
+
+            ac.downloadVideo(linkField.getText());
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Please fill the link Field.");
+        }
     }//GEN-LAST:event_downloadLabelMouseClicked
 
     /**

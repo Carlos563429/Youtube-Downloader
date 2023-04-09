@@ -5,6 +5,7 @@ import java.io.FileWriter;
 
 import javax.swing.JFileChooser;
 import com.formdev.flatlaf.FlatLightLaf;
+import java.io.IOException;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -39,15 +40,26 @@ public class AdminClass {
         }
     }
     
-    public void downloadVideo() {
+    public void downloadVideo(String link) {
         
         //First I need to write the path
-        File file = new File("no_editar.sync");
-        FileWriter fw = new FileWriter("no_editar.sync");        
-        
-        fw.append(path);
+        try {
+            File file = new File("no_editar.sync");
+            file.createNewFile();
+        } catch (IOException e) {
+            System.err.println(e);
+        }
 
-        fw.close();
+
+        try {
+            FileWriter fw = new FileWriter("no_editar.sync");        
+            
+            fw.append(path + ";");
+    
+            fw.close();   
+        } catch (IOException e) {
+            System.err.println(e);
+        }
     }
 
 }
