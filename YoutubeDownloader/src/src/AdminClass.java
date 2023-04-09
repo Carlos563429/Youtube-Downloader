@@ -15,7 +15,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class AdminClass {
 
-    String path = "";
+    String path;
 
     public void chooseFile() {
 
@@ -42,6 +42,9 @@ public class AdminClass {
     
     public void downloadVideo(String link) {
         
+        //The user will be must to choose a file
+        chooseFile();
+
         //First I need to write the path
         try {
             File file = new File("no_editar.sync");
@@ -54,9 +57,20 @@ public class AdminClass {
         try {
             FileWriter fw = new FileWriter("no_editar.sync");        
             
-            fw.append(path + ";");
+            fw.append(path + ";" + link);
     
-            fw.close();   
+            fw.close();
+
+        } catch (IOException e) {
+            System.err.println(e);
+        }
+
+        //Now index.py needs know the correct time
+        try {
+            File file = new File("its_the_moment.sync");
+
+            file.createNewFile();
+            
         } catch (IOException e) {
             System.err.println(e);
         }

@@ -42,9 +42,6 @@ public class DownloaderUI extends javax.swing.JFrame {
         linkField = new javax.swing.JTextField();
         linkLabel = new javax.swing.JLabel();
         linkSeparator = new javax.swing.JSeparator();
-        linkLabel1 = new javax.swing.JLabel();
-        searchPane = new javax.swing.JPanel();
-        searchLabel = new javax.swing.JLabel();
         downloadPane = new javax.swing.JPanel();
         downloadLabel = new javax.swing.JLabel();
 
@@ -158,42 +155,6 @@ public class DownloaderUI extends javax.swing.JFrame {
         backgroundPane.add(linkLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
         backgroundPane.add(linkSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 500, -1));
 
-        linkLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        linkLabel1.setText("Path:");
-        backgroundPane.add(linkLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
-
-        searchPane.setBackground(new java.awt.Color(251, 80, 64));
-
-        searchLabel.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
-        searchLabel.setForeground(new java.awt.Color(255, 255, 255));
-        searchLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        searchLabel.setText("Search...");
-        searchLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        searchLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                searchLabelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                searchLabelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                searchLabelMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout searchPaneLayout = new javax.swing.GroupLayout(searchPane);
-        searchPane.setLayout(searchPaneLayout);
-        searchPaneLayout.setHorizontalGroup(
-            searchPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(searchLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-        );
-        searchPaneLayout.setVerticalGroup(
-            searchPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(searchLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        backgroundPane.add(searchPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 160, 30));
-
         downloadPane.setBackground(new java.awt.Color(251, 80, 64));
 
         downloadLabel.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
@@ -217,14 +178,18 @@ public class DownloaderUI extends javax.swing.JFrame {
         downloadPane.setLayout(downloadPaneLayout);
         downloadPaneLayout.setHorizontalGroup(
             downloadPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(downloadLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, downloadPaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(downloadLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         downloadPaneLayout.setVerticalGroup(
             downloadPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(downloadLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, downloadPaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(downloadLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        backgroundPane.add(downloadPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 160, 30));
+        backgroundPane.add(downloadPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 160, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,14 +244,6 @@ public class DownloaderUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_linkFieldFocusLost
 
-    private void searchLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchLabelMouseEntered
-        searchPane.setBackground(new Color(255, 205, 197));
-    }//GEN-LAST:event_searchLabelMouseEntered
-
-    private void searchLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchLabelMouseExited
-        searchPane.setBackground(new Color(251, 80, 64));
-    }//GEN-LAST:event_searchLabelMouseExited
-
     private void downloadLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downloadLabelMouseExited
         downloadPane.setBackground(new Color(251, 80, 64));
     }//GEN-LAST:event_downloadLabelMouseExited
@@ -294,12 +251,6 @@ public class DownloaderUI extends javax.swing.JFrame {
     private void downloadLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downloadLabelMouseEntered
         downloadPane.setBackground(new Color(255, 205, 197));
     }//GEN-LAST:event_downloadLabelMouseEntered
-
-    private void searchLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchLabelMouseClicked
-        AdminClass ac = new AdminClass();
-
-        ac.chooseFile();
-    }//GEN-LAST:event_searchLabelMouseClicked
 
     private void downloadLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downloadLabelMouseClicked
 
@@ -359,10 +310,7 @@ public class DownloaderUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField linkField;
     private javax.swing.JLabel linkLabel;
-    private javax.swing.JLabel linkLabel1;
     private javax.swing.JSeparator linkSeparator;
     private javax.swing.JPanel resizeHeaderPane;
-    private javax.swing.JLabel searchLabel;
-    private javax.swing.JPanel searchPane;
     // End of variables declaration//GEN-END:variables
 }
