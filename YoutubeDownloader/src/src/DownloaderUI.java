@@ -169,6 +169,9 @@ public class DownloaderUI extends javax.swing.JFrame {
         searchLabel.setText("Search...");
         searchLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchLabelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 searchLabelMouseEntered(evt);
             }
@@ -287,6 +290,12 @@ public class DownloaderUI extends javax.swing.JFrame {
     private void downloadLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downloadLabelMouseEntered
         downloadPane.setBackground(new Color(255, 205, 197));
     }//GEN-LAST:event_downloadLabelMouseEntered
+
+    private void searchLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchLabelMouseClicked
+        AdminClass ac = new AdminClass();
+        
+        ac.chooseFile();
+    }//GEN-LAST:event_searchLabelMouseClicked
 
     /**
      * @param args the command line arguments
