@@ -4,6 +4,8 @@
  */
 package src;
 
+import java.awt.Color;
+
 /**
  *
  * @author lenoc
@@ -13,8 +15,13 @@ public class DownloaderUI extends javax.swing.JFrame {
     /**
      * Creates new form DownloaderUI
      */
+    
+    private int xMouse;
+    private int yMouse;
+    
     public DownloaderUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -26,21 +33,151 @@ public class DownloaderUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        backgroundPane = new javax.swing.JPanel();
+        headerPane = new javax.swing.JPanel();
+        resizeHeaderPane = new javax.swing.JPanel();
+        closePane = new javax.swing.JPanel();
+        closeLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+
+        backgroundPane.setBackground(new java.awt.Color(255, 255, 255));
+
+        headerPane.setBackground(new java.awt.Color(251, 80, 64));
+
+        resizeHeaderPane.setBackground(new java.awt.Color(251, 80, 64));
+        resizeHeaderPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        resizeHeaderPane.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                resizeHeaderPaneMouseDragged(evt);
+            }
+        });
+        resizeHeaderPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                resizeHeaderPaneMousePressed(evt);
+            }
+        });
+
+        closePane.setBackground(new java.awt.Color(251, 80, 64));
+
+        closeLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
+        closeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        closeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        closeLabel.setText("X");
+        closeLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        closeLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                closeLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                closeLabelMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout closePaneLayout = new javax.swing.GroupLayout(closePane);
+        closePane.setLayout(closePaneLayout);
+        closePaneLayout.setHorizontalGroup(
+            closePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(closeLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+        );
+        closePaneLayout.setVerticalGroup(
+            closePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(closeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout resizeHeaderPaneLayout = new javax.swing.GroupLayout(resizeHeaderPane);
+        resizeHeaderPane.setLayout(resizeHeaderPaneLayout);
+        resizeHeaderPaneLayout.setHorizontalGroup(
+            resizeHeaderPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resizeHeaderPaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(closePane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        resizeHeaderPaneLayout.setVerticalGroup(
+            resizeHeaderPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resizeHeaderPaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(closePane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Youtube Downloader");
+
+        javax.swing.GroupLayout headerPaneLayout = new javax.swing.GroupLayout(headerPane);
+        headerPane.setLayout(headerPaneLayout);
+        headerPaneLayout.setHorizontalGroup(
+            headerPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(resizeHeaderPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+        );
+        headerPaneLayout.setVerticalGroup(
+            headerPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPaneLayout.createSequentialGroup()
+                .addComponent(resizeHeaderPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout backgroundPaneLayout = new javax.swing.GroupLayout(backgroundPane);
+        backgroundPane.setLayout(backgroundPaneLayout);
+        backgroundPaneLayout.setHorizontalGroup(
+            backgroundPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(headerPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        backgroundPaneLayout.setVerticalGroup(
+            backgroundPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundPaneLayout.createSequentialGroup()
+                .addComponent(headerPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 334, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(backgroundPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(backgroundPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void closeLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseEntered
+        closePane.setBackground(new Color(255,205,197));
+        //Default Color (251, 80, 64)
+    }//GEN-LAST:event_closeLabelMouseEntered
+
+    private void closeLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseExited
+        closePane.setBackground(new Color(251,80,64));
+    }//GEN-LAST:event_closeLabelMouseExited
+
+    private void closeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_closeLabelMouseClicked
+
+    private void resizeHeaderPaneMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resizeHeaderPaneMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_resizeHeaderPaneMousePressed
+
+    private void resizeHeaderPaneMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resizeHeaderPaneMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_resizeHeaderPaneMouseDragged
 
     /**
      * @param args the command line arguments
@@ -78,5 +215,11 @@ public class DownloaderUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel backgroundPane;
+    private javax.swing.JLabel closeLabel;
+    private javax.swing.JPanel closePane;
+    private javax.swing.JPanel headerPane;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel resizeHeaderPane;
     // End of variables declaration//GEN-END:variables
 }
