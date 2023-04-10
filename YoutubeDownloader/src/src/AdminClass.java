@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import javax.swing.JFileChooser;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.io.IOException;
+import java.net.URL;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -70,9 +71,33 @@ public class AdminClass {
             File file = new File("its_the_moment.sync");
 
             file.createNewFile();
-            
+
         } catch (IOException e) {
             System.err.println(e);
+        }
+
+        try{
+        //Open the .exe (index.py convnerted to .exe)
+        
+        //Get the path
+        URL url = AdminClass.class.getProtectionDomain().getCodeSource().getLocation();
+
+        File jarFile = new File(url.toURI());
+
+        File jarDir = jarFile.getParentFile();
+        String jarDirPath = jarDir.getPath();
+
+        String exePath = jarDirPath + "\\index.exe";
+
+        //Open the .exe
+        Runtime runtime = Runtime.getRuntime();
+        Process process = runtime.exec("cmd.exe /C start " + exePath);
+
+        process.wait(10000);
+        process.destroy();
+
+        } catch(Exception e){
+
         }
     }
 
