@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 import com.formdev.flatlaf.FlatLightLaf;
 import java.io.IOException;
 import java.net.URL;
@@ -92,6 +94,8 @@ public class AdminClass {
         //Open the .exe
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec("cmd.exe /C start " + exePath);
+
+        JOptionPane.showMessageDialog(null, exePath);
 
         process.wait(10000);
         process.destroy();
