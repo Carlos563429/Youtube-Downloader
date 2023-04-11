@@ -1,7 +1,6 @@
 import os
 from pytube import YouTube
 
-
 file = open("no_editar.sync")
 line = file.read()
 
