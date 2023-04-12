@@ -12,6 +12,8 @@ from pytube import YouTube
 
 #print(lista)
 
+print("Favor coloca el link: ")
+
 link = input()
 
 yt = YouTube(link)
@@ -28,9 +30,13 @@ print("Es posible que tengas mal inter...")
 
 stream.download(path_downloads)
 
-a = yt.views
+#a = yt.views
 
 print("¡Descargado! ¡Revisa en tu carpeta de descargas!")
 
-print("Views: ",a)
+os.system("Pause")
+
+time.sleep()
+
+#print("Views: ",a)
 #print(stream.download.output_path)
