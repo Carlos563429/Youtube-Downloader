@@ -36,7 +36,7 @@ print("¡Descargado! ¡Revisa en tu carpeta de descargas!")
 
 os.system("Pause")
 
-time.sleep()
+time.sleep(3)
 
 #print("Views: ",a)
 #print(stream.download.output_path)
