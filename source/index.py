@@ -1,42 +1,69 @@
 import os
-import time
 from pytube import YouTube
+import tkinter as tk #UI 
+from tkinter import filedialog
 
-#file = open("no_editar.sync")
-#line = file.read()
 
-#lista = line.split(";")
+#Script
+def saveLink():
+    #Get the text
 
-#path = lista[0]
-#link = lista[1]
+    link = entry.get()
 
-#print(lista)
+    yt = YouTube(link)
 
-print("Favor coloca el link: ")
+    global path_downloads
+    path_downloads = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')
 
-link = input()
+    stream = yt.streams.get_by_itag(22)
 
-yt = YouTube(link)
+    stream.download(dirname)
 
-path_downloads = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')
+def saveDirectory():
+    #Get the dir
+    global dirname
+    dirname = filedialog.askdirectory(title='Choose a dir')
 
-stream = yt.streams.get_by_itag(22)
+    if dirname == "":
+        dirname = path_downloads
 
-print("Descargando, favor espera...")
+    fieldNoEntryPath.config(state=tk.NORMAL)
+    fieldNoEntryPath.insert(0, dirname)
+    fieldNoEntryPath.config(state=tk.DISABLED)
 
-time.sleep(2)
+#UI
+root = tk.Tk()
+root.title('Youtube Downloader')
+root.geometry('400x200')
 
-print("Es posible que tengas mal inter...")
+#Label
+labelLink = tk.Label(root, text="Paste the YT link here:")
+labelLink.pack()
 
-stream.download(path_downloads)
+#Text Field
+entry = tk.Entry(root)
+entry.config(width=40)
+entry.pack()
 
-#a = yt.views
+#Label path
+labelDir = tk.Label(root, text="Choose a destination folder:")
+labelDir.pack()
 
-print("¡Descargado! ¡Revisa en tu carpeta de descargas!")
+#Field about the path
+fieldNoEntryPath = tk.Entry(root)
+fieldNoEntryPath.config(width=40)
+fieldNoEntryPath.config(state=tk.DISABLED)
+fieldNoEntryPath.pack()
 
-os.system("Pause")
+#Button to choose a folder
+buttonPath = tk.Button(root, text="Choose a folder.", command=saveDirectory)
+buttonPath.pack()
 
-time.sleep(3)
+#Download
+button = tk.Button(root, text='Download!', command=saveLink)
+button.pack()
 
-#print("Views: ",a)
-#print(stream.download.output_path)
+label = tk.Label(root, text="Youtube Downloader")
+label.pack()
+
+root.mainloop()
