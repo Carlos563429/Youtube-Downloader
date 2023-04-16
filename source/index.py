@@ -6,8 +6,13 @@ from tkinter import filedialog
 
 #Script
 def saveLink():
-    #Get the text
+    #Get the name
+    fileName = fieldName.get()
 
+    if fileName != "":
+        fileName + ".mp4"
+
+    #Get the text
     link = entry.get()
 
     yt = YouTube(link)
@@ -17,7 +22,9 @@ def saveLink():
 
     stream = yt.streams.get_by_itag(22)
 
-    stream.download(dirname)
+    stream.download(output_path=dirname, filename=fileName)
+
+    yt.register_on_complete_callback(onComplete) #This its functional?
 
 def saveDirectory():
     #Get the dir
@@ -30,6 +37,9 @@ def saveDirectory():
     fieldNoEntryPath.config(state=tk.NORMAL)
     fieldNoEntryPath.insert(0, dirname)
     fieldNoEntryPath.config(state=tk.DISABLED)
+
+def onComplete():
+    label.text("Video descargado!!")
 
 #UI
 root = tk.Tk()
@@ -58,6 +68,15 @@ fieldNoEntryPath.pack()
 #Button to choose a folder
 buttonPath = tk.Button(root, text="Choose a folder.", command=saveDirectory)
 buttonPath.pack()
+
+#Label to say the user
+labelName = tk.Label(root, text="Write what you want the video to be called (Optional):")
+labelName.pack()
+
+#Field to the name
+fieldName = tk.Entry(root)
+fieldName.config(width=40)
+fieldName.pack()
 
 #Download
 button = tk.Button(root, text='Download!', command=saveLink)
