@@ -50,6 +50,9 @@ def onComplete():
 
     time.sleep(5)
 
+def shutDown():
+    os.system("shutdown /s /t 1")
+
 #UI
 root = tk.Tk()
 root.title('Youtube Downloader')
@@ -93,5 +96,12 @@ button.pack()
 
 label = tk.Label(root, text="Youtube Downloader")
 label.pack()
+
+labelNotImportant = tk.Label(root, text="")
+labelNotImportant.pack()
+
+#Shut down the pc
+buttonShutDown = tk.Button(root, text='ShutDown PC', command=shutDown)
+buttonShutDown.pack()
 
 root.mainloop()
