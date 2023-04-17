@@ -3,14 +3,21 @@ from pytube import YouTube
 import tkinter as tk #UI 
 from tkinter import filedialog
 
+#Variables
+dirname = None
 
 #Script
 def saveLink():
+    #Local variables
+    nameDir = dirname
+
     #Get the name
     fileName = fieldName.get()
 
-    if fileName != "":
-        fileName + ".mp4"
+    print(fileName)
+
+    if len(fileName) > 0:
+        fileName = fileName + ".mp4"
 
     #Get the text
     link = entry.get()
@@ -20,19 +27,18 @@ def saveLink():
     global path_downloads
     path_downloads = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')
 
+    if nameDir == None:
+        nameDir = path_downloads
+
     stream = yt.streams.get_by_itag(22)
 
-    stream.download(output_path=dirname, filename=fileName)
+    stream.download(output_path=nameDir, filename=fileName)
 
     yt.register_on_complete_callback(onComplete)
 
 def saveDirectory():
     #Get the dir
-    global dirname
     dirname = filedialog.askdirectory(title='Choose a dir')
-
-    if dirname == "":
-        dirname = path_downloads
 
     fieldNoEntryPath.config(state=tk.NORMAL)
     fieldNoEntryPath.insert(0, dirname)
