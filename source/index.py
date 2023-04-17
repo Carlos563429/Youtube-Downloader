@@ -1,4 +1,5 @@
 import os
+import time
 from pytube import YouTube
 import tkinter as tk #UI 
 from tkinter import filedialog
@@ -45,7 +46,9 @@ def saveDirectory():
     fieldNoEntryPath.config(state=tk.DISABLED)
 
 def onComplete():
-    label.text("Video descargado!!")
+    label.config(text="Video Descargado!!!")
+
+    time.sleep(5)
 
 #UI
 root = tk.Tk()
