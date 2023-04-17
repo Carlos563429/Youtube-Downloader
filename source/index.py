@@ -24,7 +24,7 @@ def saveLink():
 
     stream.download(output_path=dirname, filename=fileName)
 
-    yt.register_on_complete_callback(onComplete) #This its functional?
+    yt.register_on_complete_callback(onComplete)
 
 def saveDirectory():
     #Get the dir
