@@ -25,8 +25,8 @@ def saveLink():
     link = entry.get()
 
     # Get the video
-    yt = YouTube(link, use_oauth=True, allow_oauth_cache=True)
-
+    yt = YouTube(link)
+    #, use_oauth=True, allow_oauth_cache=True
     global path_downloads
     path_downloads = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')
 
