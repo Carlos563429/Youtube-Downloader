@@ -1,5 +1,6 @@
 import os
 import time
+import webbrowser
 from pytube import YouTube
 import tkinter as tk #UI 
 from tkinter import filedialog
@@ -23,7 +24,13 @@ def saveLink():
     #Get the text
     link = entry.get()
 
-    yt = YouTube(link)
+    # Get the video
+    yt = YouTube(link, use_oauth=True, allow_oauth_cache=True)
+
+    #Open de oauth
+    authorization_url = yt.get_authorization_url()
+
+    webbrowser.open(authorization_url)
 
     global path_downloads
     path_downloads = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')
