@@ -27,11 +27,6 @@ def saveLink():
     # Get the video
     yt = YouTube(link, use_oauth=True, allow_oauth_cache=True)
 
-    #Open de oauth
-    authorization_url = yt.get_authorization_url()
-
-    webbrowser.open(authorization_url)
-
     global path_downloads
     path_downloads = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Downloads')
 
