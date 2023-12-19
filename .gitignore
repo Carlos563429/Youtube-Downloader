@@ -6,3 +6,4 @@
 /Oal/build/
 /source/dist/YoutubeDownloader/
 /YoutubeDownloader/Oal/
+*.pyc
