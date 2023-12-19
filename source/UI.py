@@ -1,5 +1,6 @@
 import tkinter as tk #UI 
 from tkinter import filedialog
+from tkinter import messagebox
 import index
 
 def chooseDialog():
@@ -7,8 +8,16 @@ def chooseDialog():
     return file
 
 def downloadControl():
-    val = index.download(path=chooseDialog(), cat="mp4", entry=entry)
+    file = chooseDialog()
+    val = index.download(path=file, cat="mp4", link=entry.get(), name=fieldName.get())
 
+    match val:
+        case 0:
+            messagebox.showwarning(title=f"Error {val}", message="Entry empty\nYou have to write your Youtube video link")
+        case 1:
+            messagebox.showinfo(title="Congratulations!", message=f"Your download is ready!\nPath: {file}")
+        case _:
+            messagebox.showerror(title="Unknow error", message=f"You get the following error: {val}")
 
 root = tk.Tk()
 root.title('Youtube Downloader')
@@ -47,7 +56,7 @@ fieldName.config(width=40)
 fieldName.pack()
 
 #Download
-button = tk.Button(root, text='Download!', command=lambda: downloadControl)
+button = tk.Button(root, text='Download!', command=downloadControl)
 button.pack()
 
 label = tk.Label(root, text="Youtube Downloader")
