@@ -1,6 +1,7 @@
 import tkinter as tk #UI 
 from tkinter import filedialog
 from tkinter import messagebox
+from tkinter.ttk import Combobox
 import index
 
 def chooseDialog():
@@ -9,15 +10,20 @@ def chooseDialog():
 
 def downloadControl():
     file = chooseDialog()
-    val = index.download(path=file, cat="mp4", link=entry.get(), name=fieldName.get())
+    val = index.download(path=file, cat=catVar.get(), link=entry.get(), name=fieldName.get())
 
+    #Notification CONTROL
     match val:
         case 0:
             messagebox.showwarning(title=f"Error {val}", message="Entry empty\nYou have to write your Youtube video link")
         case 1:
             messagebox.showinfo(title="Congratulations!", message=f"Your download is ready!\nPath: {file}")
+        case 2:
+            return
+        case 3:
+            messagebox.showerror(title=f"Error {val}", message="Please choose an extension")
         case _:
-            messagebox.showerror(title="Unknow error", message=f"You get the following error: {val}")
+            messagebox.showerror(title="Unknow error", message=f"You get the following error:\n{val}")
 
 root = tk.Tk()
 root.title('Youtube Downloader')
@@ -32,20 +38,6 @@ entry = tk.Entry(root)
 entry.config(width=40)
 entry.pack()
 
-#Label path
-labelDir = tk.Label(root, text="Choose a destination folder:")
-#labelDir.pack()
-
-#Field about the path
-fieldNoEntryPath = tk.Entry(root)
-fieldNoEntryPath.config(width=40)
-fieldNoEntryPath.config(state=tk.DISABLED)
-#fieldNoEntryPath.pack()
-
-#Button to choose a folder
-buttonPath = tk.Button(root, text="Choose a folder.", command=chooseDialog)
-#buttonPath.pack()
-
 #Label to say the user
 labelName = tk.Label(root, text="Write what you want the video to be called (Optional):")
 labelName.pack()
@@ -55,8 +47,18 @@ fieldName = tk.Entry(root)
 fieldName.config(width=40)
 fieldName.pack()
 
+labelCat = tk.Label(root, text="Choose the format:")
+labelCat.pack()
+
+#Combobox for choose mp4 or mp3
+catVar = tk.StringVar()
+comboCat = Combobox(root, textvariable=catVar, values=("MP4: 360p", "MP4: 720p", "MP4: 1080p",
+                                                       "MP3: 128kbps", "MP3: 50kbps", "MP3: 70kbps", "MP3: 160kbps"), state='readonly')
+comboCat.config(width=37)
+comboCat.pack()
+
 #Download
-button = tk.Button(root, text='Download!', command=downloadControl)
+button = tk.Button(root, text='Download!', command=lambda: downloadControl())
 button.pack()
 
 label = tk.Label(root, text="Youtube Downloader")
