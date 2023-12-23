@@ -9,6 +9,7 @@ def chooseDialog():
     return file
 
 def downloadControl():
+    label.config(text="Downloading... Please Wait. DONT SCARED")
     file = chooseDialog()
     val = index.download(path=file, cat=catVar.get(), link=entry.get(), name=fieldName.get())
 
@@ -24,6 +25,9 @@ def downloadControl():
             messagebox.showerror(title=f"Error {val}", message="Please choose an extension")
         case _:
             messagebox.showerror(title="Unknow error", message=f"You get the following error:\n{val}")
+            
+    label.config(text="Youtube Downloader")
+    entry.insert(0, "")
 
 root = tk.Tk()
 root.title('Youtube Downloader')
@@ -52,7 +56,7 @@ labelCat.pack()
 
 #Combobox for choose mp4 or mp3
 catVar = tk.StringVar()
-comboCat = Combobox(root, textvariable=catVar, values=("MP4: 360p", "MP4: 720p", "MP4: 1080p",
+comboCat = Combobox(root, textvariable=catVar, values=("MP4: 144p", "MP4: 240p", "MP4: 360p", "MP4: 720p", "MP4: 1080p", "MP4: Highest resolution",
                                                        "MP3: 128kbps", "MP3: 50kbps", "MP3: 70kbps", "MP3: 160kbps"), state='readonly')
 comboCat.config(width=37)
 comboCat.pack()
