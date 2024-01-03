@@ -3,10 +3,10 @@ The perfect for download without advertisements!!
 
 # SUMMARY
 In this file you will find the next content:
- - [How to use](readme.md#use)
- - [Recomendations](readme.md#recomendations)
+ - [How to use](README.md#how-to-use)
+ - [Recomendations](README.md#recomendations)
 
-# USE
+# HOW TO USE
 ### REQUISITES
 - You need to have Python v3 installed (Others versions should function).
 
