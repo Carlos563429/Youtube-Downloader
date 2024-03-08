@@ -1,7 +1,5 @@
 import re
-import tkinter
 from pytube import YouTube
-import pytube
 
 def download(path: str, cat: str, link: str, name: str):
     if link == "": return 0 #Entry empty
