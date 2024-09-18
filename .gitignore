@@ -12,3 +12,6 @@
 #pycache
 *.pyc
 __pycache__
+
+#Rust
+/target
