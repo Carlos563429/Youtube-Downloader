@@ -1,3 +1,4 @@
+#Personal for use
 /YoutubeDownloader/nbproject/private/
 /YoutubeDownloader/build/
 /YoutubeDownloader/dist/
@@ -6,4 +7,8 @@
 /Oal/build/
 /source/dist/YoutubeDownloader/
 /YoutubeDownloader/Oal/
+*.bat
+
+#pycache
 *.pyc
+__pycache__
